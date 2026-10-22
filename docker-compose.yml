@@ -1,20 +1,29 @@
 services:
-  postgres:
-    image: postgres:16
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: clube-do-livro-db
     environment:
-      POSTGRES_DB: clube_do_livro
-      POSTGRES_USER: clube
-      POSTGRES_PASSWORD: clube
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Clube@Livro2026"
     ports:
-      - "5432:5432"
+      - "1433:1433"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - mssqldata:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U clube -d clube_do_livro"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Clube@Livro2026' -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    entrypoint: ["/opt/mssql-tools18/bin/sqlcmd", "-S", "sqlserver", "-U", "sa", "-P", "Clube@Livro2026", "-C",
+                 "-Q", "IF DB_ID('clube_do_livro') IS NULL CREATE DATABASE clube_do_livro"]
+    restart: "no"
 
 volumes:
-  pgdata:
+  mssqldata:
