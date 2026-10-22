@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: clube-do-livro-db
+    environment:
+      POSTGRES_DB: clube_do_livro
+      POSTGRES_USER: clube
+      POSTGRES_PASSWORD: clube
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clube -d clube_do_livro"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
