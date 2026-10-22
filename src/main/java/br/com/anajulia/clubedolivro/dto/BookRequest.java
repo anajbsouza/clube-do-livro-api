@@ -24,6 +24,6 @@ public record BookRequest(
         @NotNull(message = "A data do encontro é obrigatória")
         LocalDate meetingDate,
 
-        boolean authorPresent
+        Boolean authorPresent
 ) {
 }

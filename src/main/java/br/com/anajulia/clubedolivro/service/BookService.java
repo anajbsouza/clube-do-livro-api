@@ -41,7 +41,7 @@ public class BookService {
         if (bookRepository.existsByTitleIgnoreCaseAndAuthorIgnoreCase(title, author)) {
             throw new BusinessRuleException("O livro \"" + title + "\" de " + author + " já está cadastrado");
         }
-        Book book = new Book(title, author, request.publicationYear(), request.meetingDate(), request.authorPresent());
+        Book book = new Book(title, author, request.publicationYear(), request.meetingDate(), Boolean.TRUE.equals(Boolean.TRUE.equals(request.authorPresent())));
         return BookResponse.from(bookRepository.save(book));
     }
 
@@ -50,7 +50,7 @@ public class BookService {
         Book book = getBookOrThrow(id);
         // Sem save(): dentro da transação o JPA percebe a mudança e faz o UPDATE no commit
         book.update(request.title().trim(), request.author().trim(),
-                request.publicationYear(), request.meetingDate(), request.authorPresent());
+                request.publicationYear(), request.meetingDate(), Boolean.TRUE.equals(Boolean.TRUE.equals(request.authorPresent())));
         return BookResponse.from(book);
     }
 
