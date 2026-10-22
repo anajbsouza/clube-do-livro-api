@@ -39,7 +39,7 @@ class BookControllerTest {
     @Test
     void createReturns201WithLocation() throws Exception {
         when(bookService.create(any(BookRequest.class))).thenReturn(new BookResponse(
-                1L, "As Meninas", "Lygia Fagundes Telles", 1973, LocalDate.of(2026, 2, 22), false));
+                1L, "As Meninas", "Lygia Fagundes Telles", 1973, LocalDate.of(2026, 2, 22), false, null));
 
         mockMvc.perform(post("/api/books").contentType(MediaType.APPLICATION_JSON).content(AS_MENINAS_JSON))
                 .andExpect(status().isCreated())

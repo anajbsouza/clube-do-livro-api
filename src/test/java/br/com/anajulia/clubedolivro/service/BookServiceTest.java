@@ -6,6 +6,7 @@ import br.com.anajulia.clubedolivro.entity.Book;
 import br.com.anajulia.clubedolivro.exception.BusinessRuleException;
 import br.com.anajulia.clubedolivro.exception.ResourceNotFoundException;
 import br.com.anajulia.clubedolivro.repository.BookRepository;
+import br.com.anajulia.clubedolivro.repository.ReviewRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,12 +23,14 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/** Teste de unidade: sem Spring e sem banco. O repository é um mock (dublê). */
 @ExtendWith(MockitoExtension.class)
 class BookServiceTest {
 
     @Mock
     private BookRepository bookRepository;
+
+    @Mock
+    private ReviewRepository reviewRepository;
 
     @InjectMocks
     private BookService bookService;
