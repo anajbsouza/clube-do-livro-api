@@ -1,0 +1,21 @@
+-- Livros do mês do Clube das Leitoras (clubedasleitoras.com.br)
+INSERT INTO book (title, author, publication_year, meeting_date) VALUES
+    (N'As Coisas Que Você Só Vê Quando Desacelera', N'Haemin Sunim', 2012, '2025-02-23'),
+    (N'Nós: O Atlântico em Solitário', N'Tamara Klink', 2021, '2025-03-30'),
+    (N'A Cabeça do Santo', N'Socorro Acioli', 2014, '2025-04-27'),
+    (N'Noites Brancas', N'Fiódor Dostoiévski', 1848, '2025-05-25'),
+    (N'Violeta', N'Isabel Allende', 2022, '2025-07-27'),
+    (N'E Não Sobrou Nenhum', N'Agatha Christie', 1939, '2025-08-31'),
+    (N'Meu Pé de Laranja Lima', N'José Mauro de Vasconcelos', 1968, '2025-09-28'),
+    (N'Misery: Louca Obsessão', N'Stephen King', 1987, '2025-10-26'),
+    (N'Quarto de Despejo', N'Carolina Maria de Jesus', 1960, '2025-11-30'),
+    (N'As Avós', N'Doris Lessing', 2003, '2026-01-25'),
+    (N'As Meninas', N'Lygia Fagundes Telles', 1973, '2026-02-22'),
+    (N'Baixo Paraíso', N'Isabella de Andrade', NULL, '2026-03-29'),
+    (N'Caderno Proibido', N'Alba de Céspedes', 1952, '2026-04-26'),
+    (N'Doze Contos Peregrinos', N'Gabriel García Márquez', 1992, '2026-05-31'),
+    (N'Mundos de uma Noite Só', N'Renata Belmonte', NULL, '2026-06-28'),
+    (N'A Mulher Desiludida', N'Simone de Beauvoir', 1967, '2026-07-26'),
+    (N'Ressalga', N'Bethânia Pires Amaro', NULL, '2026-08-30'),
+    (N'Tudo Que Deixamos Inacabado', N'Rebecca Yarros', 2021, '2026-09-27'),
+    (N'O Jardim Secreto', N'Frances Hodgson Burnett', 1911, '2026-10-18');
